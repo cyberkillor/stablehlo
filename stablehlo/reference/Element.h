@@ -109,6 +109,9 @@ Element cosine(const Element &e);
 /// Returns element-wise floor of Element object.
 Element floor(const Element &e);
 
+/// Returns element-wise logarithm of Element object.
+Element log(const Element &e);
+
 /// Returns the maximum between two Element objects.
 Element max(const Element &e1, const Element &e2);
 

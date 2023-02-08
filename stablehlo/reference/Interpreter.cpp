@@ -93,6 +93,10 @@ llvm::Expected<SmallVector<Tensor>> eval(func::FuncOp func,
       Tensor runtimeResult =
           evalIotaOp(iotaOp.getIotaDimension(), iotaOp.getType());
       populateResults({runtimeResult});
+    } else if (auto logOp = dyn_cast<LogOp>(op)) {
+      Tensor runtimeOperand = fetchOperand(logOp.getOperand());
+      Tensor runtimeResult = evalLogOp(runtimeOperand, logOp.getType());
+      populateResults({runtimeResult});
     } else if (auto maxOp = dyn_cast<MaxOp>(op)) {
       Tensor runtimeLhs = fetchOperand(maxOp.getLhs());
       Tensor runtimeRhs = fetchOperand(maxOp.getRhs());
